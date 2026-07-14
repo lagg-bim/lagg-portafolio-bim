@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ana Torres — Portafolio BIM</title>
+<title>armando gutu — Portafolio BIM</title>
 <meta name="description" content="Portafolio de modelado BIM, coordinación y documentación técnica.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -294,6 +294,13 @@
     border-bottom:1px solid var(--border-grid);
   }
   .sheet-canvas svg{width:70%;height:70%;opacity:.85;}
+  .sheet-canvas img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:saturate(0.9) contrast(1.05);
+  }
   .sheet-tag{
     position:absolute;
     top:12px;left:12px;
@@ -557,15 +564,8 @@
         <article class="sheet">
           <div class="sheet-canvas">
             <span class="sheet-tag">LOD 350</span>
-            <svg viewBox="0 0 100 100" fill="none" stroke="#00A3E0" stroke-width="1.2">
-              <rect x="15" y="55" width="70" height="30"/>
-              <rect x="25" y="30" width="50" height="25"/>
-              <line x1="15" y1="55" x2="25" y2="30"/>
-              <line x1="85" y1="55" x2="75" y2="30"/>
-              <line x1="30" y1="65" x2="30" y2="80"/>
-              <line x1="45" y1="65" x2="45" y2="80"/>
-              <line x1="60" y1="65" x2="60" y2="80"/>
-            </svg>
+            <!-- Reemplaza el src por tu propia imagen dentro de la carpeta /images -->
+            <img src="images/proyecto-01.jpg" alt="Render del modelo BIM de Torre Corporativa Altavista" loading="lazy">
           </div>
           <div class="sheet-body">
             <div class="sheet-title">Torre Corporativa Altavista</div>
