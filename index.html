@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -650,7 +651,7 @@
       <div class="hero-actions">
         <a class="btn btn-primary" href="#disciplinas">Ver disciplinas →</a>
         <a class="btn btn-ghost" href="#contacto">Contactar</a>
-        <a class="btn btn-ghost" href="portafolio-armando-gutu.pdf" download>Descargar PDF ↓</a>
+        <button class="btn btn-ghost" id="downloadPdfBtn" type="button">Descargar PDF ↓</button>
       </div>
       <div class="hero-stats">
         <div><div class="stat-num">20</div><div class="stat-label">Proyectos BIM</div></div>
@@ -1003,7 +1004,31 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeLightbox();
   });
+  
+// Generar y descargar el PDF de la página
+  const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+  if (downloadPdfBtn) {
+    downloadPdfBtn.addEventListener('click', () => {
+      const original = downloadPdfBtn.textContent;
+      downloadPdfBtn.textContent = 'Generando PDF...';
+      downloadPdfBtn.disabled = true;
 
+      const element = document.querySelector('main');
+
+      const opt = {
+        margin:       0.4,
+        filename:     'portafolio-armando-gutu.pdf',
+        image:        { type: 'jpeg', quality: 0.95 },
+        html2canvas:  { scale: 2, backgroundColor: '#1a1a1c', useCORS: true },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+
+      html2pdf().set(opt).from(element).save().then(() => {
+        downloadPdfBtn.textContent = original;
+        downloadPdfBtn.disabled = false;
+      });
+    });
+  }
   // Resalta el ítem activo del Project Browser según la sección visible
   const items = document.querySelectorAll('.browser-item');
   const sections = document.querySelectorAll('main section[id]');
